@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <button onclick="clickHandler()"> Click Me </button>
+
+    <script>
+        function clickHandler () {
+
+            console.log("Button clicked")
+
+        }
+
+        setTimeout( () => { console.log("normal timeout!") }, 10000 )
+
+        const xhr = new XMLHttpRequest()
+        xhr.open('GET','https://dog.ceo/api/breeds/image/random')
+        xhr.onload = () => { console.log(JSON.parse(xhr.response)) } 
+        xhr.send()
+
+    </script>
+
+</body>
+</html>
