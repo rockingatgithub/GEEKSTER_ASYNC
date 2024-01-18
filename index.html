@@ -15,14 +15,37 @@
 
             console.log("Button clicked")
 
+            const xhr = new XMLHttpRequest()
+            xhr.open('GET', 'https://dog.ceo/api/breeds/image/random')
+            
+            xhr.onload = () => {
+                const response = JSON.parse(xhr.response)
+                console.log("response", response)
+                const image = document.createElement('img')
+                image.setAttribute('src', response.message)
+                image.setAttribute('height', '200px')
+                image.setAttribute('width', '200px')
+
+                document.body.append(image)
+            }
+
+            xhr.onerror = () => { console.log("Error occured!") }
+
+            xhr.send()
+
         }
 
         setTimeout( () => { console.log("normal timeout!") }, 10000 )
 
-        const xhr = new XMLHttpRequest()
-        xhr.open('GET','https://dog.ceo/api/breeds/image/random')
-        xhr.onload = () => { console.log(JSON.parse(xhr.response)) } 
-        xhr.send()
+        
+        
+
+        
+        
+        // const xhr = new XMLHttpRequest()
+        // xhr.open('GET','https://dog.ceo/api/breeds/image/random')
+        // xhr.onload = () => { console.log(JSON.parse(xhr.response)) } 
+        // xhr.send()
 
     </script>
 
